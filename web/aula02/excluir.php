@@ -5,7 +5,7 @@ if(isset($_GET['ID']) && empty($_GET['ID']) == false){
     $id = addslashes($_GET['ID']);
 
     $sql = "DELETE FROM usuarios WHERE ID = '$id'";
-    $pdo->query($sql);
+    $result = $conn->query($sql);
 
     header("Location: index.php");
 }else{

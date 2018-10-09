@@ -1,13 +1,13 @@
 <?php
-require 'db.php';
+require 'bd.php';
 
-if(isset($_POST)['Nome']) && empty($_POST['Nome']) == false){
-    $nome = addslashes($_POST['Nome']);
-    $login = addslashes($_POST['Login']);
-    $senha = md5(addslashes($_POST['Senha']));
+if(isset($_POST)['nome']) && !empty($_POST['nome']) == false){
+    $nome = addslashes($_POST['nome']);
+    $login = addslashes($_POST['login']);
+    $senha = md5(addslashes($_POST['senha']));
 
     $sql = "INSERT INTO usuarios SET nome = '$nome', login = '$login', senha = '$senha'";
-    $pdo->query($sql);
+    $result = $conn->query($sql);
 
     header("Location: index.php");
 }

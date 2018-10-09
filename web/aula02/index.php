@@ -1,7 +1,7 @@
 <?php
 require 'bd.php';
 ?>
-<a href="adicionar.php">Adicionar Novo Usuário</a>;
+<a href="adicionar.php">Adicionar Novo Usuário</a>
 <table border="0" width="100%">
     <tr>
         <th>ID</th>
@@ -11,18 +11,20 @@ require 'bd.php';
         <th>&nbsp</th>
     </tr>
     <?php
-        $sql = "SELECT * FROM usuarios";
-        $sql = $pdo->query($sql);
-        if($sql->rowCount() > 0){
-            foreach($sql->fetchAll() as $usuarios){
+         $sql = "SELECT * FROM usuarios";
+         $result = $conn->query($sql);
+        if($result->num_rows() > 0){
+            foreach($sql->fetchAll() as $usuario){
                 echo '<tr>';
-                echo '<td>'.$users['ID'].'</td>';
-                echo '<td>'.$users['Nome'].'</td>';
-                echo '<td>'.$users['Login'].'</td>';
-                echo '<td>'.$users['Status'].'</td>';
-                echo "<td><a href='editar.php?id=".$usuarios.['ID']."'>Editar</a> - <a href='excluir.php?id=".$usuarios.['ID']."'>Excluir</a>'</td>'";
+                echo '<td>'.$usuario['ID'].'</td>';
+                echo '<td>'.$usuario['nome'].'</td>';
+                echo '<td>'.$usuario['login'].'</td>';
+                echo '<td>'.$usuario['status'].'</td>';
+                echo'<td><a href="editar.php?id='.$usuarios['id'].'">Editar</a>-<a href="excluir.php?id='.$usuarios['id'].'">Excluir</a></td>';
                 echo '</tr>';
             }
         }
+        
+        $conn->close();
     ?>
 </table>
